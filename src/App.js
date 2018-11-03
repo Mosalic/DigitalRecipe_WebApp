@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
-import Recipe from './Recipe';
+import './App.css'; //import stylesheets
+import Recipe from './Recipe'; //own Component
 
 class App extends Component {
 
