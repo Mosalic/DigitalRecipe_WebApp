@@ -12,3 +12,11 @@
   background-color: #fbc3ca;
   margin: auto 10px;
 }
+
+button{
+  backgroundColor: 'rose';
+  font: inherit;
+  border: 1px solid blue;
+  padding: 8px;
+  cursor: pointer;
+}
