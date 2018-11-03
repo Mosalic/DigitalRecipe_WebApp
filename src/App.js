@@ -16,15 +16,15 @@ class App extends Component {
   }
 
 //Funktion anlegen für Behavior bei Klick
-  switchNameHandler = () => {
+  switchNameHandler = (newName) => {
     //console.log('Was clicked');
     // DONT DO THIS: this.state.recipes[0] = 'Aspirin';
     //nur recipes wird "geupdated", otherState bleibt wie es ist
     this.setState({
       recipes: [
-        {name: 'Aspirin', pieces: 3},
+        {name: newName, pieces: 3},
         {name: 'Pantopra', pieces: 1},
-        {name: 'Pille', pieces: 25}
+        {name: 'Pille', pieces: 30}
       ]
     })
   }
@@ -34,9 +34,21 @@ class App extends Component {
       <div className="App">
         <h1> Hi I am a react app</h1>
         <p>This is working</p>
-        <button onClick={this.switchNameHandler}>Switch Name</button>
-        <Recipe name={this.state.recipes[0].name} pieces={this.state.recipes[0].pieces}/>
-        <Recipe name={this.state.recipes[1].name} pieces={this.state.recipes[1].pieces}>Anmerkung: Jeden morgen einnehmen</Recipe> {/*Anmerkung ist childrenProperty, siehe Recipe.js*/}
+        <button onClick={this.switchNameHandler.bind(this, 'Aspirin')}>Switch Name</button> {/*Hier wird der name in Apsirin geändert*/}
+        <Recipe
+            name={this.state.recipes[0].name}
+            pieces={this.state.recipes[0].pieces}
+        />
+        <Recipe
+            name={this.state.recipes[1].name}
+            pieces={this.state.recipes[1].pieces}
+            click={this.switchNameHandler.bind(this, 'Paracetamol')}> {/*Hier wird der name in Paracetamol geändert*/}
+            Anmerkung: Jeden morgen einnehmen
+        </Recipe> {/*Anmerkung ist childrenProperty, siehe Recipe.js*/}
+        <Recipe
+            name={this.state.recipes[2].name}
+            pieces={this.state.recipes[2].pieces}
+        />
       </div>
     );
   }
