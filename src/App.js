@@ -41,11 +41,24 @@ class App extends Component {
   }
 
   render() {
+    //a different way to style your code, instead of css-file, attentionn: in javascript so "css-code" is a bit different
+    const styleBtn ={
+      backgroundColor: 'rose',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer'
+    };
+
+    // can just return 1 div
     return (
       <div className="App">
         <h1> Hi I am a react app</h1>
         <p>This is working</p>
-        <button onClick={this.switchNameHandler.bind(this, 'Aspirin')}>Switch Name</button> {/*Hier wird der name in Apsirin geändert*/}
+        <button
+            style={styleBtn}
+            onClick={this.switchNameHandler.bind(this, 'Aspirin')}>Switch Name {/*Hier wird der name in Apsirin geändert*/}
+        </button>
         <Recipe
             name={this.state.recipes[0].name}
             pieces={this.state.recipes[0].pieces}
