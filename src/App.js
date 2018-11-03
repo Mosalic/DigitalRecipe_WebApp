@@ -29,6 +29,17 @@ class App extends Component {
     })
   }
 
+//Funktion wird aufgerufen wenn sich im Inputfeld von Recipe.js was ändert
+  nameChangedHandler = (event) => {
+    this.setState({
+      recipes: [
+        {name: "testAspirin", pieces: 3},
+        {name: event.target.value, pieces: 1},
+        {name: 'Pille', pieces: 28}
+      ]
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -42,7 +53,8 @@ class App extends Component {
         <Recipe
             name={this.state.recipes[1].name}
             pieces={this.state.recipes[1].pieces}
-            click={this.switchNameHandler.bind(this, 'Paracetamol')}> {/*Hier wird der name in Paracetamol geändert*/}
+            click={this.switchNameHandler.bind(this, 'Paracetamol')}
+            changed={this.nameChangedHandler}> {/*Hier wird der name in Paracetamol geändert*/}
             Anmerkung: Jeden morgen einnehmen
         </Recipe> {/*Anmerkung ist childrenProperty, siehe Recipe.js*/}
         <Recipe
