@@ -7,7 +7,7 @@ import axios from 'axios';
 class App extends Component {
 
 /*componentDidMount(){
-  fetch('http://localhost/android_connect/testgetusers.php')
+  fetch('http://localhost/API_Data/testgetusers.php')
   .then(function(response) {
     return response.json();
   })
@@ -18,7 +18,7 @@ class App extends Component {
 }*/
 
 componentDidMount(){
-  axios.get('http://localhost/android_connect/testgetusers.php')
+  axios.get('http://localhost/API_Data/testgetusers.php')
   .then((response) => {
 
       console.log(response.data);

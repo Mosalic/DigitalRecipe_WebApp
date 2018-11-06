@@ -12,7 +12,7 @@ class ContentHandler extends Component {
  /*fetchUsers() {
    console.log("Get data");
     // Where we're fetching data from
-    fetch(`http://192.168.0.104/android_connect/testgetusers.php`)
+    fetch(`http://192.168.0.104/API_Data/testgetusers.php`)
       // We get the API response and receive data in JSON format...
       .then(response => response.json())
       // ...then we update the users state
@@ -27,7 +27,7 @@ class ContentHandler extends Component {
 
 
   /*componentDidMount(){
-    axios.get('http://localhost/android_connect/testgetusers.php')
+    axios.get('http://localhost/API_Data/testgetusers.php')
     .then((response) => {
       this.setState({
         otherState: response.data
