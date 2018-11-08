@@ -13,7 +13,7 @@ class RecipeHandler extends Component {
       {name: 'Pille', pieces: 25}
     ],
     otherState:'some other value'
-  }
+  };
 
 //Funktion anlegen für Behavior bei Klick
   switchNameHandler = (newName) => {
@@ -26,7 +26,7 @@ class RecipeHandler extends Component {
         {name: 'Pantopra', pieces: 1},
         {name: 'Pille', pieces: 30}
       ]
-    })
+    });
   }
 
 //Funktion wird aufgerufen wenn sich im Inputfeld von Recipe.js was ändert
