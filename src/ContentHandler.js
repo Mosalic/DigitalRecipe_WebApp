@@ -25,8 +25,8 @@ class ContentHandler extends Component {
     // can just return 1 div
     return (
       <div className="ContentHandler">
-        <button onClick={this.fetchUsers}>Data</button>
-        {/*<ul>{this.state.recipes.map(recipe => <li key ={recipe.id}>{recipe.name}</li>)}</ul>*/}
+        <h1>Anforderungen</h1>
+      
         {this.state.recipes.map(recipe =>
           <Recipe key = {recipe.id}
             name={recipe.name}

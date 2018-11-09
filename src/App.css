@@ -1,3 +1,72 @@
 .App {
   text-align: center;
+  height: 100vh;
+  display: flex;
+}
+
+.App_Aside{
+  width: 40%;
+  height:100%;
+  background-color: #F8E0E6;
+  text-align: center;
+}
+
+.App_Form{
+  width: 60%;
+  height: 100%;
+  background-color: white;
+  padding-top: 20px;
+}
+
+.App_Info{
+  width: 50%;
+  text-align: justify;
+  vertical-align: middle;
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#login_form{
+  background-color: #fbc3ca;
+  border-radius: 8px;
+  box-shadow: 0 5px 6px #ccc;
+  width: 80%;
+  height: 400px;
+  margin-top: 180px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+#login_submit{
+  background-color: white;
+  border-radius: 5px;
+  border: 1px;
+  border-style: solid;
+  border-color: #A4A4A4;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+
+}
+#login_input{
+  width:50%;;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  padding: 25px;
+  padding-top: 50px;
+  padding-bottom: 40px;
+}
+
+#login_input label{
+  float: left;
+  margin: 10px;
+}
+#login_input input{
+  float: right;
+  margin: 10px;
 }
