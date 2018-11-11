@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import './App.css'; //import stylesheets
-import ContentHandler from './ContentHandler'; //own Component
-import Login from './Login';
-import Header from './Header';
+import './design/App.css'; //import stylesheets
+import Root from './components/Root';
 
 
 class App extends Component {
@@ -11,19 +9,7 @@ class App extends Component {
       // can just return 1 div
       return (
         <div className="App">
-
-          <div className="App_Aside">
-              <Header/>
-              <p className="App_Info">Registriere dich und Logge dich ein, um bei deinem Arzt dein Rezept ganz bequem von zu Hause
-                aus anzufordern. Dein Arzt überprüft die Angaben wie gewohnt und stellt dir dein Rezept aus.
-                Das Rezept kannst du auf deinem Smartphone über die App einsehen.
-              </p>
-          </div>
-          <div className="App_Form">
-            {/*<ContentHandler />*/}
-            <Login/>
-          </div>
-
+            <Root /> {/*Component where insert Routing*/}
         </div>
       );
   }

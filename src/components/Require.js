@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Recipe from './Recipe';
 import axios from 'axios';
 
-class ContentHandler extends Component {
+class Require extends Component {
   state = {
     //Array
     recipes: []
@@ -26,7 +26,7 @@ class ContentHandler extends Component {
     return (
       <div className="ContentHandler">
         <h1>Anforderungen</h1>
-      
+
         {this.state.recipes.map(recipe =>
           <Recipe key = {recipe.id}
             name={recipe.name}
@@ -41,4 +41,4 @@ class ContentHandler extends Component {
   }
 }
 
-export default ContentHandler;
+export default Require;
