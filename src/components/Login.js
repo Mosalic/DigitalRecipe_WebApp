@@ -7,10 +7,10 @@ import {Link, Redirect, withRouter} from 'react-router-dom';
 
 class Login extends Component {
 
-constructor(){
-  super();
+constructor(props){
+  super(props);
   this.state = {
-    user:'',
+    username:'',
     password:'',
     isTiping: false,
     isLoggedIn:false
@@ -26,16 +26,16 @@ checkLogin(){
   console.log("Button");
   this.setState({isLoggedIn: true}); //mit Click auf Button wird der User als eingeloggt eingestuft
   //this.props.history.push("/home"); //hierfür withRouter importieren und die Komponente mit withRouter(ComponentName) exportieren
-  //return(<ContentHandler/>)
+
 }
 
 handleChange(event){
   //setzt während dem Tippen die Variablen/States
-  if(event.target.type === "text" && this.state.isTiping){
+  /*if(event.target.type === "text" && this.state.isTiping){
     this.setState({
-      user: event.target.value
+      username: event.target.value
     });
-    console.log('User: ' + this.state.user);
+    console.log('User: ' + this.state.username);
   }else if(event.target.type === "password" && this.state.isTiping){
     this.setState({
       password: event.target.value
@@ -45,7 +45,12 @@ handleChange(event){
     this.setState({
       isTiping: true
     });
-  }
+  }*/
+  //name von den inputs sind die selben wie die variablen/States
+  //wird ein passwort eingetippt, wird das passwort gesetzt
+  this.setState({[event.target.name]: event.target.value});
+  console.log(this.state);
+
 }
   render() {
     {/*ist der user eingeloggt wird er zur Home-Seite verlinkt*/}
@@ -76,8 +81,8 @@ handleChange(event){
                               <label> Passwort:  </label>
                           </div>
                           <div>
-                            <input type="text"  placeholder="Enter E-Mail or Username" onChange={this.handleChange}/>
-                            <input type="password" placeholder="Enter Password" onChange={this.handleChange}/>
+                            <input type="text" name="username" placeholder="Enter E-Mail or Username" value={this.state.username} onChange={(e) => this.handleChange(e)}/>
+                            <input type="password" name="password" placeholder="Enter Password" value={this.state.password} onChange={(e) => this.handleChange(e)}/>
                             <br/>
                           </div>
 
