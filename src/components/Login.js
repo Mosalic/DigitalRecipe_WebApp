@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../design/App.css'; //import stylesheets
 import Header from './Header';
 import {Link, Redirect, withRouter} from 'react-router-dom';
-//import History from './OwnBrowserRouter';
+import axios from 'axios';
 
 
 class Login extends Component {
@@ -17,13 +17,26 @@ constructor(props){
   };
 
   //necessary to make this work in callback
+  this.registerUser = this.registerUser.bind(this);
   this.checkLogin = this.checkLogin.bind(this);
   this.handleChange = this.handleChange.bind(this);
 }
 
+registerUser(){
+  console.log("Registrieren");
+  //inputs zusammenfassen für Parameterübergabe
+  const user = {username: this.state.username,
+                password: this.state.password};
+  //Inputs send to API, to insert in to database
+  axios.post('http://localhost/API_Data/registerWeb.php', {user})
+    .then(response => {
+      console.log(response.data);
+    });
+}
+
 //check if inserts are correct and the user can login
 checkLogin(){
-  console.log("Button");
+  console.log("Button: " + this.state.username + ", " + this.state.password);
   this.setState({isLoggedIn: true}); //mit Click auf Button wird der User als eingeloggt eingestuft
   //this.props.history.push("/home"); //hierfür withRouter importieren und die Komponente mit withRouter(ComponentName) exportieren
 
@@ -31,27 +44,11 @@ checkLogin(){
 
 handleChange(event){
   //setzt während dem Tippen die Variablen/States
-  /*if(event.target.type === "text" && this.state.isTiping){
-    this.setState({
-      username: event.target.value
-    });
-    console.log('User: ' + this.state.username);
-  }else if(event.target.type === "password" && this.state.isTiping){
-    this.setState({
-      password: event.target.value
-    });
-    console.log('Password: ' + this.state.password);
-  }else{
-    this.setState({
-      isTiping: true
-    });
-  }*/
-  //name von den inputs sind die selben wie die variablen/States
-  //wird ein passwort eingetippt, wird das passwort gesetzt
+  //console.log("Change input: " + event.target.value); //zum testen
   this.setState({[event.target.name]: event.target.value});
-  console.log(this.state);
-
 }
+
+
   render() {
     {/*ist der user eingeloggt wird er zur Home-Seite verlinkt*/}
     if(this.state.isLoggedIn === true){
@@ -88,6 +85,7 @@ handleChange(event){
 
                       </div>
                       <button onClick={this.checkLogin}>Login</button>
+                      <button onClick={this.registerUser}>Registrieren</button>
                   </div>
 
                 </div>
