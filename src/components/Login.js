@@ -12,6 +12,7 @@ constructor(props){
   this.state = {
     username:'',
     password:'',
+    userID: '',
     isTiping: false,
     isLoggedIn:false
   };
@@ -24,11 +25,11 @@ constructor(props){
 
 registerUser(){
   console.log("Registrieren");
-  //inputs zusammenfassen für Parameterübergabe
-  const user = {username: this.state.username,
-                password: this.state.password};
   //Inputs send to API, to insert in to database
-  axios.post('http://localhost/API_Data/registerWeb.php', {user})
+  axios.post('http://localhost/API_Data/registerWeb.php', {
+      userName: this.state.username,
+      userPassword: this.state.password,
+    })
     .then(response => {
       console.log(response.data);
     });
@@ -36,8 +37,24 @@ registerUser(){
 
 //check if inserts are correct and the user can login
 checkLogin(){
-  console.log("Button: " + this.state.username + ", " + this.state.password);
-  this.setState({isLoggedIn: true}); //mit Click auf Button wird der User als eingeloggt eingestuft
+  console.log("Button Login: " + this.state.username + ", " + this.state.password);
+  /*//inputs zusammenfassen für Parameterübergabe
+  const user = {user_name: this.state.username,
+                user_password: this.state.password};*/
+  //Inputs send to API, to insert in to database
+  axios.post('http://localhost/API_Data/login.php', {
+      userName: this.state.username,
+      userPassword: this.state.password,
+    })
+    .then(response => {
+      if(response.data){
+        console.log("Response: " + response.data); //userID kommt zurück, wichtig für weitere Werte/Abfragen
+        this.setState({userID: response.data});
+        this.setState({isLoggedIn: true}); //mit Click auf Button und einer ID als Antwort wird der User als eingeloggt eingestuft
+      }
+
+    });
+
   //this.props.history.push("/home"); //hierfür withRouter importieren und die Komponente mit withRouter(ComponentName) exportieren
 
 }
