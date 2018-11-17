@@ -68,8 +68,10 @@ handleChange(event){
 
   render() {
     {/*ist der user eingeloggt wird er zur Home-Seite verlinkt*/}
+    {/*${this.state.userID}*/}
     if(this.state.isLoggedIn === true){
-      return <Redirect to='/home/$this.state.userID'/>
+      console.log(this.state.userID);
+      return <Redirect to={`/home/${this.state.userID}`}/>
     }
       return (
         <div>

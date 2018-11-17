@@ -25,7 +25,7 @@ class Require extends Component {
     // can just return 1 div
     return (
       <div className="ContentHandler">
-        <h1>Anforderungen</h1>
+        <h1 className="contentTitle">Anforderungen</h1>
 
         {this.state.recipes.map(recipe =>
           <Recipe key = {recipe.id}

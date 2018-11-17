@@ -13,6 +13,20 @@
 
 }
 
+#content{
+
+  height: 95%;
+  overflow-y: scroll;
+}
+
+.contentTitle{
+  width: 60%;
+  color: #fbc3ca;
+  text-shadow: 1px 1px 1px #ccc;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 button{
   backgroundColor: 'rose';
   font: inherit;

@@ -22,10 +22,10 @@ class Root extends Component {
               <hr />
               {/*Routen definieren*/}
               <Route exact path="/" component={ContentHandler} /> {/*mit exact wird ContentHandler nicht bei den anderen Link gerendert*/}
-              <Route path="/home/:id" component={Home}/>
+              <Route exact path="/home/:id" component={Home}/>
               <Route path="/login" component={Login}/>
               <Switch>
-                <Route path='/home/:id/require' component={Require} />
+                <Route path='/home/:id/:location' component={Home} />
                 <Route path='/home/:id/profile' component={Require} />
                 <Route path='/home/:id/recipe' component={Require} />
               </Switch>
