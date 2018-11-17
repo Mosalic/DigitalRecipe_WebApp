@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../design/App.css'; //import stylesheets
 import Header from './Header';
-import {Link, Redirect, withRouter} from 'react-router-dom';
+import {Link, NavLink, Redirect, withRouter} from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -38,19 +38,19 @@ registerUser(){
 //check if inserts are correct and the user can login
 checkLogin(){
   console.log("Button Login: " + this.state.username + ", " + this.state.password);
-  /*//inputs zusammenfassen für Parameterübergabe
-  const user = {user_name: this.state.username,
-                user_password: this.state.password};*/
+  //inputs zusammenfassen für Parameterübergabe
   //Inputs send to API, to insert in to database
   axios.post('http://localhost/API_Data/login.php', {
       userName: this.state.username,
       userPassword: this.state.password,
     })
     .then(response => {
-      if(response.data){
+      if(response.data && response.data !== "Angaben bitte überprüfen"){
         console.log("Response: " + response.data); //userID kommt zurück, wichtig für weitere Werte/Abfragen
         this.setState({userID: response.data});
         this.setState({isLoggedIn: true}); //mit Click auf Button und einer ID als Antwort wird der User als eingeloggt eingestuft
+      }else{
+        console.log(response.data); //Angaben stimmen nicht für Login, Rückmeldung für den User
       }
 
     });
@@ -69,7 +69,7 @@ handleChange(event){
   render() {
     {/*ist der user eingeloggt wird er zur Home-Seite verlinkt*/}
     if(this.state.isLoggedIn === true){
-      return <Redirect to='/home' />
+      return <Redirect to='/home/$this.state.userID'/>
     }
       return (
         <div>
@@ -81,6 +81,14 @@ handleChange(event){
                     aus anzufordern. Dein Arzt überprüft die Angaben wie gewohnt und stellt dir dein Rezept aus.
                     Das Rezept kannst du auf deinem Smartphone über die App einsehen.
                   </p>
+
+                  <ul>
+                      {/*Testmenü mit Links*/}
+                      <li><NavLink to='/' exact activeStyle={{color:'green'}}>Conent</NavLink></li> {/*exact verhindert, dass Parent-NavLink auch als activ gekennzeichnet wird*/}
+                      <li><NavLink to='/home' activeStyle={{color:'green'}}>Home</NavLink></li>
+                      <li><NavLink to='/login' activeStyle={{color:'green'}}>Login</NavLink></li>
+                  </ul>
+
               </div>
 
               <div className="App_Form">

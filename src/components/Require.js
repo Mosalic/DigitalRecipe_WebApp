@@ -31,9 +31,8 @@ class Require extends Component {
           <Recipe key = {recipe.id}
             name={recipe.name}
             id={recipe.id}
-            password={recipe.password}>
-            Und ich will Medizin!!!
-          </Recipe>
+            password={recipe.password} />
+
         )}
 
       </div>
