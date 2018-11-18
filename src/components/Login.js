@@ -84,38 +84,37 @@ handleChange(event){
                     Das Rezept kannst du auf deinem Smartphone über die App einsehen.
                   </p>
 
-                  <ul>
-                      {/*Testmenü mit Links*/}
-                      <li><NavLink to='/' exact activeStyle={{color:'green'}}>Conent</NavLink></li> {/*exact verhindert, dass Parent-NavLink auch als activ gekennzeichnet wird*/}
+                  {/*<ul>
+                      <li><NavLink to='/' exact activeStyle={{color:'green'}}>Conent</NavLink></li>
                       <li><NavLink to='/home' activeStyle={{color:'green'}}>Home</NavLink></li>
                       <li><NavLink to='/login' activeStyle={{color:'green'}}>Login</NavLink></li>
-                  </ul>
-
+                  </ul>*/}
               </div>
 
-              <div className="App_Form">
+              <div className="App_Form_Login">
                 <div id="login_form">
-                  <h1>Login</h1>
+                    <h1>Login</h1>
 
                   <div id="login_submit">
-                      <div id="login_input">
+                        <div id="login_input">
 
-                          <div>
-                              <label> Name:</label>
-                              <label> Passwort:  </label>
-                          </div>
-                          <div>
-                            <input type="text" name="username" placeholder="Enter E-Mail or Username" value={this.state.username} onChange={(e) => this.handleChange(e)}/>
-                            <input type="password" name="password" placeholder="Enter Password" value={this.state.password} onChange={(e) => this.handleChange(e)}/>
-                            <br/>
-                          </div>
+                            <div>
+                                <label> Name:</label>
+                                <label> Passwort:  </label>
+                            </div>
+                            <div>
+                              <input type="text" name="username" placeholder="Enter E-Mail or Username" value={this.state.username} onChange={(e) => this.handleChange(e)}/>
+                              <input type="password" name="password" placeholder="Enter Password" value={this.state.password} onChange={(e) => this.handleChange(e)}/>
+                              <br/>
+                            </div>
 
-                      </div>
-                      <button onClick={this.checkLogin}>Login</button>
-                      <button onClick={this.registerUser}>Registrieren</button>
+                        </div>
+                        <button onClick={this.checkLogin}>Login</button>
+                        <button onClick={this.registerUser}>Registrieren</button>
+                    </div>
+
                   </div>
 
-                </div>
               </div>
 
           </div>

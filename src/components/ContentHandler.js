@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom';
+import '../design/App.css'; //import stylesheets
 //import RecipeHandler from './RecipeHandler'; //own Component
 
 class ContentHandler extends Component {
@@ -11,6 +12,7 @@ class ContentHandler extends Component {
     return (
       <div className="ContentHandler">
         <h1>ContentHandler</h1>
+
         <Redirect to='/login' />
       </div>
     );

@@ -25,9 +25,9 @@ class Root extends Component {
               <Route exact path="/home/:id" component={Home}/>
               <Route path="/login" component={Login}/>
               <Switch>
-                <Route path='/home/:id/:location' component={Home} />
-                <Route path='/home/:id/profile' component={Require} />
-                <Route path='/home/:id/recipe' component={Require} />
+                <Route path='/home/:id/:location' component={Home} /> {/*location: require, profile or recipe*/}
+                {/*<Route path='/home/:id/profile' component={Require} />
+                <Route path='/home/:id/recipe' component={Require} />*/}
               </Switch>
 
             </div>

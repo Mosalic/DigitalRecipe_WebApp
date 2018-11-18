@@ -9,14 +9,17 @@
 
 .Header{
   background-color:#F8E0E6;
+  color: white;
+  text-shadow: 1px 1px 1px black;
   margin: auto 10px;
+  font-size: 28px;
 
 }
 
-#content{
-
+#contentHome{
   height: 95%;
   overflow-y: scroll;
+  padding-top: 30px;
 }
 
 .contentTitle{
@@ -27,6 +30,55 @@
   margin-right: auto;
 }
 
+.App_Aside button{
+  background-color: white;
+  border: 1px solid #A4A4A4;
+  border-radius: 5px;
+  color:  #F8E0E6;
+  text-shadow: 1px 1px 1px #A4A4A4;
+  padding: 12px 30px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.logout{
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 50px;
+  width: 600px;
+  height: 2em;
+}
+.App_Aside li{
+  font-size: 28px;
+
+}
+
+.App_Aside li:hover {
+  font-size: 30px;
+}
+
+.App_Aside ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.App_Aside .active{
+  font-size: 30px;
+  text-decoration: underline;
+}
+
+.menu{
+  margin-top: 100px;
+  width:70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.menuLink{
+  text-decoration: none;
+}
 button{
   backgroundColor: 'rose';
   font: inherit;

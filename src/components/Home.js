@@ -3,6 +3,8 @@ import Header from './Header';
 import '../design/RecipeStyle.css';
 import Logout from './Logout';
 import Require from './Require';
+import ReleasedRecipe from './ReleasedRecipe';
+import Profile from './Profile';
 import {NavLink, Route, Redirect} from 'react-router-dom';
 
 class Home extends Component {
@@ -11,11 +13,23 @@ class Home extends Component {
     super(props);
 
     this.state = {
-      userID: ''
+      userID: '',
+      isLoggedIn: false
     };
   }
 
+  componentDidMount(){
+      this.setState({userID: this.props.match.params.id});
+
+  }
+
   render() {
+    {/*if(this.state.userID !== ""){
+      return <Redirect to={`/home/${this.state.userID}/require`}/>
+    }*/}
+
+    {console.log("Home mit:" + this.state.userID);}
+
     // can just return 1 div
     return (
       <div>
@@ -23,12 +37,14 @@ class Home extends Component {
 
             <div className="App_Aside">
                 <Header/>
-                <ul>
-                    <li><NavLink to='/home/1/require' activeStyle={{color:'green'}}>Anforderungen</NavLink></li>
-                    <li><NavLink to='/home/profile' activeStyle={{color:'green'}}>Profil</NavLink></li>
-                    <li><NavLink to='/home/recipe' activeStyle={{color:'green'}}>Rezepte</NavLink></li>
-                </ul>
-                <div>
+                <div className="menu">
+                  <ul>
+                      <li><NavLink className="menuLink" activeClassName="active" to={`/home/${this.state.userID}/require`} >Anforderungen</NavLink></li>
+                      <li><NavLink className="menuLink" activeClassName="active" to={`/home/${this.state.userID}/recipe`} >Rezepte</NavLink></li>
+                      <li><NavLink className="menuLink" activeClassName="active" to={`/home/${this.state.userID}/profile`} >Profil</NavLink></li>
+                  </ul>
+                </div>
+                <div className="logout">
                   <Logout />
                 </div>
             </div>
@@ -41,12 +57,11 @@ class Home extends Component {
                     <p>User ID: {this.props.match.params.id}</p> {soll Parameter ausgeben, der über den Link/Route übergeben wird}
 
                 </div>*/}
-                <div id="content">
+                <div id="contentHome">
                   {/*<Require />*/}
-                  {(this.props.match.params.location == "require") ?
-                    (
-                      <Require />
-                    )
+                  {(this.props.match.params.location == "require") ? (<Require />)
+                    : (this.props.match.params.location == "recipe") ? (<ReleasedRecipe />)
+                    : (this.props.match.params.location == "profile") ? (<Profile />)
                     : "Path existiert nicht"
                   }
                   {this.props.children} {/*shows the Child-Component, when you insert a Child-Component to this Component*/}
