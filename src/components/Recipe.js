@@ -44,7 +44,9 @@ class Recipe extends Component {
 
     return(
        <div className="Recipe">
-          <p>"Rezept für den Patienten mit Versichertennummer {this.state.verNumber} mit dem Medikament {this.state.medicine} wurde vom zuständigen Arzt mit der Nummer {this.state.doc} verschrieben"</p> {/*Parargraoh ist clickcable, props.click ruft Methode auf die in App.js übergeben wurde*/}
+          <p>"Rezept für den Patienten mit Versichertennummer {this.state.verNumber}
+              mit dem Medikament {this.state.medicine} wurde vom zuständigen Arzt
+              mit der Nummer {this.state.doc} verschrieben"</p> {/*Parargraoh ist clickcable, props.click ruft Methode auf die in App.js übergeben wurde*/}
           <p>{this.state.children}</p>  {/*zeigt die Anmerkung:... an*/}
 
           <button onClick={this.deleteRecipe}>
