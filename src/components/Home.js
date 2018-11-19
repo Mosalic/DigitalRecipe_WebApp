@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import Header from './Header';
 import '../design/RecipeStyle.css';
 import Logout from './Logout';
-import Require from './Require';
+import RequireList from './RequireList';
 import ReleasedRecipe from './ReleasedRecipe';
 import Profile from './Profile';
-import {NavLink, Route, Redirect} from 'react-router-dom';
+import {NavLink/*, Route, Redirect*/} from 'react-router-dom';
 
 class Home extends Component {
 
@@ -19,16 +19,12 @@ class Home extends Component {
   }
 
   componentDidMount(){
-      this.setState({userID: this.props.match.params.id});
-
+    console.log("Home did Mount Params: " + this.props.match.params.id);
+    this.setState({userID: this.props.match.params.id});
   }
 
   render() {
-    {/*if(this.state.userID !== ""){
-      return <Redirect to={`/home/${this.state.userID}/require`}/>
-    }*/}
-
-    {console.log("Home mit:" + this.state.userID);}
+    console.log("Home render:" + this.state.userID);
 
     // can just return 1 div
     return (
@@ -59,10 +55,14 @@ class Home extends Component {
                 </div>*/}
                 <div id="contentHome">
                   {/*<Require />*/}
-                  {(this.props.match.params.location == "require") ? (<Require />)
-                    : (this.props.match.params.location == "recipe") ? (<ReleasedRecipe />)
-                    : (this.props.match.params.location == "profile") ? (<Profile />)
-                    : "Path existiert nicht"
+                  { (this.state.userID !== "") ?
+                      (
+                        (this.props.match.params.location === "require") ? (<RequireList userID={this.state.userID}/>)
+                        : (this.props.match.params.location === "recipe") ? (<ReleasedRecipe />)
+                        : (this.props.match.params.location === "profile") ? (<Profile />)
+                        : "Path existiert nicht"
+                      )
+                    : "Willkommen"
                   }
                   {this.props.children} {/*shows the Child-Component, when you insert a Child-Component to this Component*/}
                 </div>

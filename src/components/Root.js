@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import ContentHandler from './ContentHandler';
 import Login from './Login';
 import Home from './Home';
-import Require from './Require';
+//import RequireList from './RequireList';
 
 
 
@@ -22,8 +22,8 @@ class Root extends Component {
               <hr />
               {/*Routen definieren*/}
               <Route exact path="/" component={ContentHandler} /> {/*mit exact wird ContentHandler nicht bei den anderen Link gerendert*/}
-              <Route exact path="/home/:id" component={Home}/>
               <Route path="/login" component={Login}/>
+              <Route exact path="/home/:id" component={Home}/>
               <Switch>
                 <Route path='/home/:id/:location' component={Home} /> {/*location: require, profile or recipe*/}
                 {/*<Route path='/home/:id/profile' component={Require} />

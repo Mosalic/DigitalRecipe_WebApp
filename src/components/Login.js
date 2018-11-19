@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../design/App.css'; //import stylesheets
 import Header from './Header';
-import {Link, NavLink, Redirect, withRouter} from 'react-router-dom';
+import {/*NavLink,*/ Redirect, withRouter} from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -31,7 +31,7 @@ registerUser(){
       userPassword: this.state.password,
     })
     .then(response => {
-      console.log(response.data);
+      console.log("Login registerUser: " +response.data);
     });
 }
 
@@ -41,6 +41,7 @@ checkLogin(){
   //inputs zusammenfassen für Parameterübergabe
   //Inputs send to API, to insert in to database
   axios.post('http://localhost/API_Data/login.php', {
+      userRole: 'Aerzte',  //gibt Datenbank an in der nach User gesucht wird, web benutzen nur ärzte
       userName: this.state.username,
       userPassword: this.state.password,
     })
@@ -50,7 +51,7 @@ checkLogin(){
         this.setState({userID: response.data});
         this.setState({isLoggedIn: true}); //mit Click auf Button und einer ID als Antwort wird der User als eingeloggt eingestuft
       }else{
-        console.log(response.data); //Angaben stimmen nicht für Login, Rückmeldung für den User
+        console.log("Login checkLogin: " + response.data); //Angaben stimmen nicht für Login, Rückmeldung für den User
       }
 
     });
@@ -70,7 +71,7 @@ handleChange(event){
     {/*ist der user eingeloggt wird er zur Home-Seite verlinkt*/}
     {/*${this.state.userID}*/}
     if(this.state.isLoggedIn === true){
-      console.log(this.state.userID);
+      console.log("Login render: " + this.state.userID);
       return <Redirect to={`/home/${this.state.userID}`}/>
     }
       return (

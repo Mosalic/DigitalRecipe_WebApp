@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //import RecipeHandler from './RecipeHandler'; //own Component
-import Recipe from './Recipe';
-import axios from 'axios';
+//import Recipe from './Recipe';
+//import axios from 'axios';
 
 class Profile extends Component {
 
