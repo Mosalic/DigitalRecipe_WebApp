@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 //import RecipeHandler from './RecipeHandler'; //own Component
-import Recipe from './Recipe';
+import Require from './Require';
 import axios from 'axios';
 
-class Require extends Component {
+class RequireList extends Component {
 
   constructor(props){
     super(props);
@@ -37,18 +37,19 @@ class Require extends Component {
       <div className="ContentHandler">
         <h1 className="contentTitle">Anforderungen</h1>
 
-        {this.state.requires.map(require =>
-          <Recipe key = {require.id}
-            verNumber={require.ver_nummer}
-            id={require.id}
-            medicine={require.med_name}
-            complaint={require.beschwerden}/>
-
-        )}
+        {  /*nach require. sind in API festgelegt*/
+          this.state.requires.map(require =>
+            <Require key = {require.id}
+              verNumber={require.ver_nummer}
+              id={require.id}
+              medicine={require.med_name}
+              complaint={require.beschwerden}/>
+          )
+        }
 
       </div>
     );
   }
 }
 
-export default Require;
+export default RequireList;

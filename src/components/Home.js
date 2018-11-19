@@ -3,7 +3,7 @@ import Header from './Header';
 import '../design/RecipeStyle.css';
 import Logout from './Logout';
 import RequireList from './RequireList';
-import ReleasedRecipe from './ReleasedRecipe';
+import RecipeList from './RecipeList';
 import Profile from './Profile';
 import {NavLink/*, Route, Redirect*/} from 'react-router-dom';
 
@@ -58,7 +58,7 @@ class Home extends Component {
                   { (this.state.userID !== "") ?
                       (
                         (this.props.match.params.location === "require") ? (<RequireList userID={this.state.userID}/>)
-                        : (this.props.match.params.location === "recipe") ? (<ReleasedRecipe />)
+                        : (this.props.match.params.location === "recipe") ? (<RecipeList userID={this.state.userID}/>)
                         : (this.props.match.params.location === "profile") ? (<Profile />)
                         : "Path existiert nicht"
                       )
