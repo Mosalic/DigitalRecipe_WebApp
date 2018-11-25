@@ -24,7 +24,7 @@ class Home extends Component {
   }
 
   render() {
-    console.log("Home render:" + this.state.userID);
+    //console.log("Home render:" + this.state.userID);
 
     // can just return 1 div
     return (

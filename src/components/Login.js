@@ -14,7 +14,8 @@ constructor(props){
     password:'',
     userID: '',
     isTiping: false,
-    isLoggedIn:false
+    isLoggedIn:false,
+    response: ''
   };
 
   //necessary to make this work in callback
@@ -26,7 +27,8 @@ constructor(props){
 registerUser(){
   console.log("Registrieren");
   //Inputs send to API, to insert in to database
-  axios.post('http://localhost/API_Data/registerWeb.php', {
+  axios.post('http://localhost/API_Data/registerUser.php', {
+      userRole: 'Aerzte',  //gibt Datenbank an in der nach User gesucht wird, web benutzen nur ärzte
       userName: this.state.username,
       userPassword: this.state.password,
     })
@@ -46,12 +48,17 @@ checkLogin(){
       userPassword: this.state.password,
     })
     .then(response => {
-      if(response.data && response.data !== "Angaben bitte überprüfen"){
-        console.log("Response: " + response.data); //userID kommt zurück, wichtig für weitere Werte/Abfragen
-        this.setState({userID: response.data});
-        this.setState({isLoggedIn: true}); //mit Click auf Button und einer ID als Antwort wird der User als eingeloggt eingestuft
+      this.setState({response: response.data});
+      //in response kommt unter anderem userID kommt zurück, wichtig für weitere Werte/Abfragen
+      //console.log("Login checkLogin: " + JSON.stringify(this.state.response));
+      if(this.state.response !== " Angaben bitte überprüfen"){
+          if(this.state.response[0].isUser == true){
+            console.log("isUser: " +  this.state.response[0].isUser); //isUSer und id in login.php festgelegt
+            this.setState({userID: this.state.response[0].id});
+            this.setState({isLoggedIn: true}); //mit Click auf Button und einer ID als Antwort wird der User als eingeloggt eingestuft
+          }
       }else{
-        console.log("Login checkLogin: " + response.data); //Angaben stimmen nicht für Login, Rückmeldung für den User
+        console.log("Login checkLogin: " + this.state.response); //Angaben stimmen nicht für Login, Rückmeldung für den User
       }
 
     });
