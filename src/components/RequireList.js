@@ -18,6 +18,7 @@ class RequireList extends Component {
     console.log("RequireList didMount: " + this.state.userID);
 
     axios.post('http://localhost/API_Data/getRequires.php',  {
+        userRole: 'Aerzte',
         userID: this.state.userID
       })
     .then((response) => {
