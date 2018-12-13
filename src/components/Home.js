@@ -5,7 +5,7 @@ import Logout from './Logout';
 import RequireList from './RequireList';
 import RecipeList from './RecipeList';
 import Profile from './Profile';
-import {NavLink/*, Route, Redirect*/} from 'react-router-dom';
+import {NavLink/*, Route*/, Redirect} from 'react-router-dom';
 
 class Home extends Component {
 
@@ -21,6 +21,7 @@ class Home extends Component {
   componentDidMount(){
     console.log("Home did Mount Params: " + this.props.match.params.id);
     this.setState({userID: this.props.match.params.id});
+
   }
 
   render() {
@@ -28,7 +29,9 @@ class Home extends Component {
 
     // can just return 1 div
     return (
+
       <div>
+        <Redirect to={`/home/${this.props.match.params.id}/require`} /> {/*User wird direkt zu Anforderungen weitergeleitet*/}
         <div className="App">
 
             <div className="App_Aside">

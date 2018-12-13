@@ -58,9 +58,10 @@
   position: absolute;
   bottom: 0;
   margin-bottom: 50px;
-  width: 600px;
+  width: 500px;
   height: 2em;
 }
+
 .App_Aside li{
   font-size: 28px;
 
@@ -91,6 +92,7 @@
 .menuLink{
   text-decoration: none;
 }
+
 button{
   backgroundColor: 'rose';
   font: inherit;

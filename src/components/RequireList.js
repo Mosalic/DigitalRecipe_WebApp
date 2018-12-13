@@ -44,7 +44,8 @@ class RequireList extends Component {
               verNumber={require.ver_nummer}
               id={require.id}
               medicine={require.med_name}
-              complaint={require.beschwerden}/>
+              complaint={require.beschwerden}
+              docID={this.state.userID}/>
           )
         }
 

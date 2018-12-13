@@ -17,6 +17,7 @@ class RecipeList extends Component {
     console.log("RecipeList didMount: " + this.state.userID);
 
     axios.post('http://localhost/API_Data/getRecipes.php',  {
+        userRole: 'Aerzte',
         userID: this.state.userID
       })
     .then((response) => {
