@@ -1,10 +1,16 @@
 /*gobal css File*/
 .Recipe{
-      width: 60%;
+      width: 50%;
       border: 1px solid #eee;
       box-shadow: 0 2px 3px #ccc;
       padding: 16px;
       margin: 16px auto;
+}
+
+.Recipe p{
+  margin-left: 80px;
+  margin-right: 80px;
+  text-align: left;
 }
 
 .Header{
@@ -99,4 +105,11 @@ button{
   border: 1px solid blue;
   padding: 8px;
   cursor: pointer;
+}
+
+.profileInfo{
+  margin-left: 250px;
+  margin-right: 250px;
+  text-align: left;
+  color: #A4A4A4;
 }

@@ -79,7 +79,7 @@ handleChange(event){
     {/*${this.state.userID}*/}
     if(this.state.isLoggedIn === true){
       console.log("Login render: " + this.state.userID);
-      return <Redirect to={`/home/${this.state.userID}`}/>
+      return <Redirect to={`/home/${this.state.userID}/require`}/>
     }
       return (
         <div>

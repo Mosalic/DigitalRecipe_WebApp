@@ -22,8 +22,9 @@ class RequireList extends Component {
         userID: this.state.userID
       })
     .then((response) => {
+        //console.log("Response: " + response.data); //Testausgabe wegen error
         this.setState({requires: response.data});
-        console.log("RequireList didMount: " + JSON.stringify(this.state.requires));
+        console.log("RequireList didMount respone: " + JSON.stringify(this.state.requires));
 
     })
     .catch((error) => {
@@ -41,10 +42,14 @@ class RequireList extends Component {
         {  /*nach require. sind in API festgelegt*/
           this.state.requires.map(require =>
             <Require key = {require.id}
+              patFirstName={require.pat_firstName}
+              patLastName={require.pat_lastName}
               verNumber={require.ver_nummer}
               id={require.id}
               medicine={require.med_name}
               complaint={require.beschwerden}
+              recipeFK={require.id_rezept_fk}
+              statusReleased={require.zugelassen}
               docID={this.state.userID}/>
           )
         }

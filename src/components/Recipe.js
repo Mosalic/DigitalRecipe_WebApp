@@ -9,17 +9,26 @@ class Recipe extends Component {
 
     this.state={
       id: props.id,
+      patLastName: props.patLastName,
+      patFirstName: props.patFirstName,
       verNumber: props.verNumber,
       doc: props.doctor,
       medicine: props.medicine,
-      //isReleased: false
+      medPortion: props.med_portion,
+      medForm: props.med_form,
+      btnText: "Rezept löschen",
+      isDeleted: false
     }
 
       this.deleteRecipe = this.deleteRecipe.bind(this);
   }
 
   deleteRecipe(){
-    console.log("Recipe deleteRecipe")
+    if(!this.state.isDeleted){
+      console.log("Recipe deleteRecipe, noch kein Zugriff auf Datenbank");
+      this.setState({ isDeleted: true,
+                      btnText: "Gelöscht"});
+    }
     //Rezept wurde noch nicht ausgestellt
     /*if(!this.state.isReleased){
       console.log("Rezept löschen mit der verNumber: " + this.state.verNumber);
@@ -44,13 +53,16 @@ class Recipe extends Component {
 
     return(
        <div className="Recipe">
-          <p>"Rezept für den Patienten mit Versichertennummer {this.state.verNumber}
-              mit dem Medikament {this.state.medicine} wurde vom zuständigen Arzt
-              mit der Nummer {this.state.doc} verschrieben"</p> {/*Parargraoh ist clickcable, props.click ruft Methode auf die in App.js übergeben wurde*/}
+          <p><b>Rezept für ...</b> </p>
+          <p>Patienten: {this.state.patFirstName + " " + this.state.patLastName}</p>
+          <p>Versichertennummer: {this.state.verNumber}</p>
+          <p>verschriebenes Medikament: {this.state.medicine}</p>
+          <p>Menge/Form: {this.state.medPortion + " / " + this.state.medForm}</p>
+          {/*<p>zuständiger Arzt {this.state.doc}</p>*/} {/*Parargraoh ist clickcable, props.click ruft Methode auf die in App.js übergeben wurde*/}
           <p>{this.state.children}</p>  {/*zeigt die Anmerkung:... an*/}
 
-          <button onClick={this.deleteRecipe}>
-              Rezept löschen
+          <button onClick={this.deleteRecipe} disabled={this.state.isDeleted}>
+              {this.state.btnText}
           </button>
        </div>
 

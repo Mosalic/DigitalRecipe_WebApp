@@ -31,7 +31,7 @@ class Home extends Component {
     return (
 
       <div>
-        <Redirect to={`/home/${this.props.match.params.id}/require`} /> {/*User wird direkt zu Anforderungen weitergeleitet*/}
+        {/*<Redirect to={`/home/${this.props.match.params.id}/require`} /> User wird direkt zu Anforderungen weitergeleitet*/}
         <div className="App">
 
             <div className="App_Aside">
@@ -62,7 +62,7 @@ class Home extends Component {
                       (
                         (this.props.match.params.location === "require") ? (<RequireList userID={this.state.userID}/>)
                         : (this.props.match.params.location === "recipe") ? (<RecipeList userID={this.state.userID}/>)
-                        : (this.props.match.params.location === "profile") ? (<Profile />)
+                        : (this.props.match.params.location === "profile") ? (<Profile userID={this.state.userID}/>)
                         : "Path existiert nicht"
                       )
                     : "Willkommen"

@@ -21,7 +21,7 @@ class RecipeList extends Component {
         userID: this.state.userID
       })
     .then((response) => {
-        if(response.date == "Keine Angaben enthalten"){
+        if(response.data === "Keine Angaben enthalten"){
           console.log("RecipeList didMount: " + JSON.stringify(this.state.recipes));
         }else{
           this.setState({recipes: response.data});
@@ -47,7 +47,11 @@ class RecipeList extends Component {
             (
               this.state.recipes.map(recipe =>
                 <Recipe key = {recipe.id}
+                  patLastName={recipe.pat_lastName}
+                  patFirstName={recipe.pat_firstName}
                   medicine={recipe.med_name}
+                  med_portion={recipe.med_menge}
+                  med_form={recipe.med_form}
                   id={recipe.id}
                   verNumber={recipe.ver_nummer}
                   doctor={recipe.LANR_fk} />
