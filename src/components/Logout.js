@@ -23,9 +23,8 @@ class Logout extends Component {
     if(this.state.isLoggedIn === false){
       return <Redirect to='/login'/>
     }
-      // can just return 1 div
+    
       return (
-
           <div>
              <button onClick={this.checkLogout = this.checkLogout.bind(this)}>
                  Logout

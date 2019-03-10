@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom';
 import '../design/App.css'; //import stylesheets
-//import RecipeHandler from './RecipeHandler'; //own Component
 
 class ContentHandler extends Component {
-
 
   render() {
 

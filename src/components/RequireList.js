@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import RecipeHandler from './RecipeHandler'; //own Component
 import Require from './Require';
 import axios from 'axios';
 
@@ -16,13 +15,12 @@ class RequireList extends Component {
 
   componentDidMount(){
     console.log("RequireList didMount: " + this.state.userID);
-
+    //API request, send data
     axios.post('http://localhost/API_Data/getRequires.php',  {
         userRole: 'Aerzte',
         userID: this.state.userID
       })
     .then((response) => {
-        //console.log("Response: " + response.data); //Testausgabe wegen error
         this.setState({requires: response.data});
         console.log("RequireList didMount respone: " + JSON.stringify(this.state.requires));
 
@@ -34,12 +32,12 @@ class RequireList extends Component {
   }
 
   render() {
-    // can just return 1 div
+
     return (
       <div className="ContentHandler">
         <h1 className="contentTitle">Anforderungen</h1>
 
-        {  /*nach require. sind in API festgelegt*/
+        {  /*set data for each require, data from the API*/
           this.state.requires.map(require =>
             <Require key = {require.id}
               patFirstName={require.pat_firstName}

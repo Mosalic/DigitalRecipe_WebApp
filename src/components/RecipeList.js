@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import RecipeHandler from './RecipeHandler'; //own Component
 import Recipe from './Recipe';
 import axios from 'axios';
 
@@ -14,8 +13,7 @@ class RecipeList extends Component {
   }
 
   componentDidMount(){
-    console.log("RecipeList didMount: " + this.state.userID);
-
+    //Api request
     axios.post('http://localhost/API_Data/getRecipes.php',  {
         userRole: 'Aerzte',
         userID: this.state.userID
@@ -25,10 +23,8 @@ class RecipeList extends Component {
           console.log("RecipeList didMount: " + JSON.stringify(this.state.recipes));
         }else{
           this.setState({recipes: response.data});
-          console.log("RecipeList didMount: " + JSON.stringify(this.state.recipes));
+          //console.log("RecipeList didMount: " + JSON.stringify(this.state.recipes));
         }
-
-
     })
     .catch((error) => {
       console.log('error', error);
@@ -38,11 +34,11 @@ class RecipeList extends Component {
 
 
   render() {
-    // can just return 1 div
+
     return (
       <div className="ContentHandler">
         <h1 className="contentTitle">Ausgestellte Rezepte</h1>
-
+        {/*set data for each element/recipe*/}
         { (this.state.recipes !== "" && this.state.recipes !== "Keine Angaben enthalten") ?
             (
               this.state.recipes.map(recipe =>

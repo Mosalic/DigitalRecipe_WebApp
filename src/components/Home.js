@@ -5,7 +5,7 @@ import Logout from './Logout';
 import RequireList from './RequireList';
 import RecipeList from './RecipeList';
 import Profile from './Profile';
-import {NavLink/*, Route*/, Redirect} from 'react-router-dom';
+import {NavLink, Redirect} from 'react-router-dom';
 
 class Home extends Component {
 
@@ -21,17 +21,14 @@ class Home extends Component {
   componentDidMount(){
     console.log("Home did Mount Params: " + this.props.match.params.id);
     this.setState({userID: this.props.match.params.id});
-
   }
 
   render() {
-    //console.log("Home render:" + this.state.userID);
-
     // can just return 1 div
     return (
 
       <div>
-        {/*<Redirect to={`/home/${this.props.match.params.id}/require`} /> User wird direkt zu Anforderungen weitergeleitet*/}
+        {/*when user is logged in*/}
         <div className="App">
 
             <div className="App_Aside">
@@ -51,13 +48,8 @@ class Home extends Component {
 
             <div className="App_Form">
 
-                {/*<div>
-                    <h3>Home</h3>
-                    <p>User ID: {this.props.match.params.id}</p> {soll Parameter ausgeben, der über den Link/Route übergeben wird}
-
-                </div>*/}
                 <div id="contentHome">
-                  {/*<Require />*/}
+                  {/*home can show different components*/}
                   { (this.state.userID !== "") ?
                       (
                         (this.props.match.params.location === "require") ? (<RequireList userID={this.state.userID}/>)
@@ -67,7 +59,7 @@ class Home extends Component {
                       )
                     : "Willkommen"
                   }
-                  {this.props.children} {/*shows the Child-Component, when you insert a Child-Component to this Component*/}
+                  {this.props.children}
                 </div>
 
 

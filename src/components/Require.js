@@ -26,30 +26,26 @@ class Require extends Component {
   }
 
   componentDidMount(){
-    console.log("Require didMount: " + this.state.isReleased);
+
     if(this.state.recipeFK != null){
       console.log("zugelassen wert: " + this.state.statusReleased);
-      // test = JSON.parse(this.state.statusReleased);
+
       this.setState({ isReleased: JSON.parse(this.state.statusReleased),
                       btnText: "Bearbeitet"});
     }
-
   }
 
   releaseRecipe(){
-    //Rezept wurde noch nicht ausgestellt
-    console.log(this.state.isReleased);
-
+    //recipe isnt public yet
     if(!this.state.isReleased){
       console.log("Rezept ausstellen mit der verNumber: " + this.state.verNumber);
 
       //send RecipeData to API, to insert in to database
       axios.post('http://localhost/API_Data/releaseRecipe.php', {
           verNumber: this.state.verNumber,
-          requireID: this.state.id, //Rezept bekommt gleiche id wie die ugehörige Anforderung
+          requireID: this.state.id, //recipeID depends on requireID
           neededMedicine: this.state.medicine,
           userID: this.state.docID
-            //später wird hier das Medikament aus der Anforderung übergeben
         })
         .then(response => {
           console.log("Response: " + response.data);
@@ -70,11 +66,11 @@ class Require extends Component {
     return(
        <div className="Recipe">
           <p><b>Anforderung von ...</b> </p>
-          <p>Patient: {this.state.patFirstName + " " + this.state.patLastName}</p> {/*Parargraoh ist clickcable, props.click ruft Methode auf die in App.js übergeben wurde*/}
+          <p>Patient: {this.state.patFirstName + " " + this.state.patLastName}</p> 
           <p>Versichertennummer: {this.state.verNumber}</p>
           <p>Mit der Beschwerde: {this.state.complaint}</p>
           <p>benötigt ein Rezept für: {this.state.medicine}</p>
-          <p>{this.state.children}</p>  {/*zeigt die Anmerkung:... an*/}
+          <p>{this.state.children}</p>
 
           <button id="btn_ReleaseRequire" onClick={this.releaseRecipe} disabled={this.state.isReleased}>
               {this.state.btnText} {/*set Button text*/}
